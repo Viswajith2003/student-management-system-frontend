@@ -2,14 +2,14 @@ import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-export default function Sidebar() {
+export default function StudentSidebar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
   const handleLogout = () => {
     logout();
-    navigate("/admin-login");
+    navigate("/student-login");
   };
 
   const isActive = (path) => {
@@ -19,7 +19,7 @@ export default function Sidebar() {
   const menuItems = [
     {
       name: "Dashboard",
-      path: "/dashboard",
+      path: "/student-view",
       icon: (
         <svg
           className="w-5 h-5"
@@ -37,8 +37,8 @@ export default function Sidebar() {
       ),
     },
     {
-      name: "Add Student",
-      path: "/add-student",
+      name: "Student Profile",
+      path: "/student-profile",
       icon: (
         <svg
           className="w-5 h-5"
@@ -50,26 +50,7 @@ export default function Sidebar() {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
-          />
-        </svg>
-      ),
-    },
-    {
-      name: "Manage Subjects",
-      path: "/subjects",
-      icon: (
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
           />
         </svg>
       ),
@@ -77,10 +58,10 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className="h-screen w-84 bg-[#0c1c3a] text-white fixed left-0 top-0 flex flex-col shadow-xl">
+    <div className="h-screen w-64 bg-[#0c1c3a] text-white fixed left-0 top-0 flex flex-col shadow-xl">
       {/* Logo/Header */}
       <div className="p-6 border-b border-gray-700">
-        <h1 className="text-2xl font-bold text-yellow-300">SMS Admin</h1>
+        <h1 className="text-2xl font-bold text-yellow-300">SMS Student</h1>
         <p className="text-xs text-gray-400 mt-1">Student Management System</p>
       </div>
 
@@ -100,28 +81,31 @@ export default function Sidebar() {
       </div>
 
       {/* Navigation Menu */}
-      <nav className="flex-1 px-3 py-4 space-y-1">
-        {menuItems.map((item) => (
-          <Link
-            key={item.path}
-            to={item.path}
-            className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${
-              isActive(item.path)
-                ? "bg-blue-600 text-white shadow-lg"
-                : "text-gray-300 hover:bg-gray-800 hover:text-white"
-            }`}
-          >
-            {item.icon}
-            <span className="font-medium">{item.name}</span>
-          </Link>
-        ))}
+      <nav className="flex-1 overflow-y-auto py-4">
+        <ul className="space-y-1 px-3">
+          {menuItems.map((item) => (
+            <li key={item.path}>
+              <Link
+                to={item.path}
+                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors duration-200 ${
+                  isActive(item.path)
+                    ? "bg-blue-600 text-white"
+                    : "text-gray-300 hover:bg-gray-700 hover:text-white"
+                }`}
+              >
+                {item.icon}
+                <span className="font-medium">{item.name}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </nav>
 
       {/* Logout Button */}
       <div className="p-4 border-t border-gray-700">
         <button
           onClick={handleLogout}
-          className="w-full flex items-center justify-center space-x-2 bg-red-500 hover:bg-red-700 text-white px-4 py-3 rounded-lg transition-all duration-200 font-medium shadow-lg"
+          className="w-full flex items-center justify-center space-x-2 px-4 py-3 bg-red-600 hover:bg-red-700 rounded-lg transition-colors duration-200"
         >
           <svg
             className="w-5 h-5"
@@ -136,7 +120,7 @@ export default function Sidebar() {
               d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
             />
           </svg>
-          <span>Logout</span>
+          <span className="font-medium">Logout</span>
         </button>
       </div>
     </div>

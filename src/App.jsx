@@ -8,6 +8,9 @@ import Dashboard from "./pages/Dashboard";
 import AddStudent from "./pages/AddStudent";
 import EditStudent from "./pages/EditStudent";
 import StudentView from "./pages/StudentView";
+import StudentProfile from "./pages/StudentProfile";
+import ManageSubjects from "./pages/ManageSubjects";
+import SubjectsLanding from "./pages/SubjectsLanding";
 
 // Protected Route Component
 const ProtectedRoute = ({ children, adminOnly = false }) => {
@@ -94,6 +97,22 @@ function AppRoutes() {
           </ProtectedRoute>
         }
       />
+      <Route
+        path="/subjects"
+        element={
+          <ProtectedRoute adminOnly={true}>
+            <SubjectsLanding />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/manage-subjects/:id"
+        element={
+          <ProtectedRoute adminOnly={true}>
+            <ManageSubjects />
+          </ProtectedRoute>
+        }
+      />
 
       {/* Protected Student Routes */}
       <Route
@@ -101,6 +120,14 @@ function AppRoutes() {
         element={
           <ProtectedRoute>
             <StudentView />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/student-profile"
+        element={
+          <ProtectedRoute>
+            <StudentProfile />
           </ProtectedRoute>
         }
       />

@@ -145,38 +145,17 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="flex bg-gray-50 min-h-screen">
+    <div className="flex bg-[#081328] text-white min-h-screen">
       <Sidebar />
       <div className="flex-1 ml-64">
-        <div className="container mx-auto px-8 py-8">
+        <div className="container mx-auto px-8 py-8 ">
           <div className="flex justify-between items-center mb-8">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-800">
-                Admin Dashboard
-              </h1>
-              <p className="text-gray-600 mt-1">
+            <div className="mt-12">
+              <h1 className="text-3xl font-bold text-white">Admin Dashboard</h1>
+              <p className="text-gray-400 mt-1">
                 Manage and monitor student information
               </p>
             </div>
-            <Link
-              to="/add-student"
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition shadow-lg flex items-center space-x-2"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                />
-              </svg>
-              <span>Add New Student</span>
-            </Link>
           </div>
 
           {error && (
@@ -323,7 +302,7 @@ export default function Dashboard() {
                 type="text"
                 placeholder="Search by name, email, regNo, or department..."
                 onChange={handleSearch}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-10 pr-4 py-2 border placeholder:text-gray-500 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <select
@@ -339,7 +318,7 @@ export default function Dashboard() {
           </div>
 
           {/* Students Table */}
-          <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="bg-white text-black rounded-xl shadow-lg p-6">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold text-gray-800">All Students</h2>
               {fetchingStudents && (

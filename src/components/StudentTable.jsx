@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { FiEdit } from "react-icons/fi";
+import { MdDelete } from "react-icons/md";
 
 export default function StudentTable({ students, onDelete, onRefresh }) {
   const navigate = useNavigate();
@@ -80,15 +82,17 @@ export default function StudentTable({ students, onDelete, onRefresh }) {
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                   <button
                     onClick={() => handleEdit(student._id)}
-                    className="text-blue-600 hover:text-blue-900"
+                    className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-900 transition"
+                    title="Edit Student"
                   >
-                    Edit
+                    <FiEdit className="w-4 h-4" />
                   </button>
                   <button
                     onClick={() => handleDelete(student._id, student.name)}
-                    className="text-red-600 hover:text-red-900"
+                    className="inline-flex items-center gap-1 text-red-600 hover:text-red-900 transition"
+                    title="Delete Student"
                   >
-                    Delete
+                    <MdDelete className="w-4 h-4" />
                   </button>
                 </td>
               </tr>
