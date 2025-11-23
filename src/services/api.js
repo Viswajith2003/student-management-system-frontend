@@ -1,7 +1,9 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5001/api", // backend URL
+  baseURL:
+    import.meta.env.VITE_API_URL ||
+    "https://student-management-system-backend-nine.vercel.app/api",
 });
 
 // Attach token automatically (if exists)

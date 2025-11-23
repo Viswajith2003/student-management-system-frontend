@@ -77,17 +77,19 @@ export default function StudentView() {
   return (
     <div className="flex min-h-screen bg-[#081328]">
       <StudentSidebar />
-      <div className="ml-64 flex-1 p-8">
+      <div className="flex-1 lg:ml-64 p-4 sm:p-6 lg:p-8">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-white mb-2">
+          <div className="mb-6 sm:mb-8">
+            <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2">
               Academic Dashboard
             </h1>
-            <p className="text-gray-400">Welcome back, {student?.name}</p>
+            <p className="text-gray-400 text-sm sm:text-base">
+              Welcome back, {student?.name}
+            </p>
           </div>
 
           {/* Statistics Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
             <div className="bg-linear-to-br from-blue-500 to-blue-700 p-6 rounded-xl shadow-lg">
               <div className="flex items-center justify-between">
                 <div>

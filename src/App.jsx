@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./context/AuthContext";
+import Welcome from "./pages/Welcome";
 import AdminLogin from "./pages/AdminLogin";
 import StudentLogin from "./pages/StudentLogin";
 import StudentRegister from "./pages/StudentRegister";
@@ -40,6 +41,9 @@ function AppRoutes() {
 
   return (
     <Routes>
+      {/* Welcome Page - Landing Page */}
+      <Route path="/welcome" element={<Welcome />} />
+
       {/* Public Routes */}
       <Route
         path="/admin-login"
@@ -132,24 +136,11 @@ function AppRoutes() {
         }
       />
 
-      {/* Default Route */}
-      <Route
-        path="/"
-        element={
-          isAuthenticated() ? (
-            isAdmin() ? (
-              <Navigate to="/dashboard" replace />
-            ) : (
-              <Navigate to="/student-view" replace />
-            )
-          ) : (
-            <Navigate to="/admin-login" replace />
-          )
-        }
-      />
+      {/* Default Route - Redirect to Welcome Page */}
+      <Route path="/" element={<Welcome />} />
 
       {/* 404 Route */}
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path="*" element={<Navigate to="/welcome" replace />} />
     </Routes>
   );
 }
