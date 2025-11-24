@@ -86,7 +86,7 @@ export default function Dashboard() {
 
   const fetchAllStats = async () => {
     try {
-      const response = await api.get("/students?limit=1000");
+      const response = await api.get("/api/students?limit=1000");
       const allStudents = response.data.data || [];
 
       const departments = {};
@@ -113,7 +113,7 @@ export default function Dashboard() {
 
   const handleDelete = async (id) => {
     try {
-      await api.delete(`/students/${id}`);
+      await api.delete(`/api/students/${id}`);
       setError("");
       fetchStudents();
     } catch (err) {

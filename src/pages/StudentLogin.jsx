@@ -34,7 +34,7 @@ export default function StudentLogin() {
     }, 3000);
 
     try {
-      const response = await api.post("/auth/student-login", formData);
+      const response = await api.post("/api/auth/student-login", formData);
       clearTimeout(warningTimer);
       const { token, user } = response.data;
       login(user, token);

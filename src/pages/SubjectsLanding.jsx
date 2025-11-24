@@ -29,7 +29,7 @@ export default function SubjectsLanding() {
       }
 
       const response = await api.get(
-        `/students?page=${currentPage}&limit=${limit}&search=${debouncedSearch}`
+        `/api/students?page=${currentPage}&limit=${limit}&search=${debouncedSearch}`
       );
       setStudents(response.data.data || []);
       setTotalPages(response.data.totalPages || 1);

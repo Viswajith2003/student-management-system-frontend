@@ -23,7 +23,7 @@ function StudentProfile() {
   const fetchStudentData = async () => {
     try {
       setLoading(true);
-      const response = await api.get(`/students/${user.id}`);
+      const response = await api.get(`/api/students/${user.id}`);
       setStudent(response.data.data);
       setEditedStudent(response.data.data);
     } catch (err) {
@@ -66,7 +66,7 @@ function StudentProfile() {
         gender: editedStudent.gender,
       };
 
-      await api.put(`/students/${user.id}`, updateData);
+      await api.put(`/api/students/${user.id}`, updateData);
 
       setStudent(editedStudent);
       setIsEditing(false);

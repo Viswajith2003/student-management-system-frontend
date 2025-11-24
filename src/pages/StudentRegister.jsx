@@ -46,7 +46,7 @@ export default function StudentRegister() {
     setLoading(true);
 
     try {
-      const response = await api.post("/auth/register-student", {
+      const response = await api.post("/api/auth/register-student", {
         name: formData.name,
         email: formData.email,
         regNo: formData.regNo,

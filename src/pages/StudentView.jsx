@@ -18,7 +18,7 @@ export default function StudentView() {
   const fetchStudentData = async () => {
     try {
       setLoading(true);
-      const response = await api.get(`/students/${user.id}`);
+      const response = await api.get(`/api/students/${user.id}`);
       setStudent(response.data.data);
     } catch (err) {
       console.error("Error fetching student data:", err);

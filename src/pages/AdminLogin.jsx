@@ -25,7 +25,7 @@ export default function AdminLogin() {
     }, 3000);
 
     try {
-      const res = await api.post("/auth/admin-login", {
+      const res = await api.post("/api/auth/admin-login", {
         email,
         password,
       });

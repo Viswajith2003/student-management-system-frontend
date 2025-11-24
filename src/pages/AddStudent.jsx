@@ -30,7 +30,7 @@ export default function AddStudent() {
     setLoading(true);
 
     try {
-      await api.post("/students", formData);
+      await api.post("/api/students", formData);
       navigate("/dashboard");
     } catch (err) {
       console.error("Error creating student:", err);

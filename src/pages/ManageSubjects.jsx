@@ -24,7 +24,7 @@ export default function ManageSubjects() {
   const fetchStudent = async () => {
     try {
       setLoading(true);
-      const response = await api.get(`/students/${id}`);
+      const response = await api.get(`/api/students/${id}`);
       const studentData = response.data.data;
       setStudent(studentData);
       setSubjects(studentData.subjects || []);
@@ -70,7 +70,7 @@ export default function ManageSubjects() {
         { subjectName: newSubject.name, mark: marks },
       ];
 
-      await api.put(`/students/${id}`, { subjects: updatedSubjects });
+      await api.put(`/api/students/${id}`, { subjects: updatedSubjects });
       setSubjects(updatedSubjects);
       setNewSubject({ name: "", marks: "" });
       setShowAddForm(false);
@@ -84,7 +84,7 @@ export default function ManageSubjects() {
 
   const handleUpdateSubject = async (index) => {
     try {
-      await api.put(`/students/${id}`, { subjects });
+      await api.put(`/api/students/${id}`, { subjects });
       setEditingIndex(null);
       setSuccess("Subject updated successfully");
       setTimeout(() => setSuccess(""), 3000);

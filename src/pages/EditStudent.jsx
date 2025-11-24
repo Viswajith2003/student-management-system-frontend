@@ -26,7 +26,7 @@ export default function EditStudent() {
   const fetchStudent = async () => {
     try {
       setLoading(true);
-      const response = await api.get(`/students/${id}`);
+      const response = await api.get(`/api/students/${id}`);
       const student = response.data.data;
       setFormData({
         name: student.name || "",
@@ -88,11 +88,11 @@ export default function EditStudent() {
         updateData.password = formData.password;
       }
 
-      await api.put(`/students/${id}`, updateData);
+      await api.put(`/api/students/${id}`, updateData);
 
       // Update subjects separately if changed
       if (formData.subjects.length > 0) {
-        await api.put(`/students/${id}/subjects`, {
+        await api.put(`/api/students/${id}/subjects`, {
           subjects: formData.subjects,
         });
       }
@@ -245,9 +245,6 @@ export default function EditStudent() {
                   />
                 </div>
               </div>
-
-             
-              
 
               <div className="flex space-x-4 pt-6">
                 <button
